@@ -8,7 +8,7 @@ import (
 )
 
 
-func ToEntity(dto api.UserDTO, id uuid.UUID) (entities.User, error) {
+func ToEntity(dto *api.UserDTO, id uuid.UUID) *entities.User {
 	user := entities.User{
 		TelegramId: dto.TelegramId,
 		Name: dto.Name,
@@ -20,10 +20,10 @@ func ToEntity(dto api.UserDTO, id uuid.UUID) (entities.User, error) {
 		Description: dto.Description,
 	}
 
-	return user, nil
+	return &user
 }
 
-func ToDTO(user entities.User) (api.UserDTO, error) {
+func ToDTO(user *entities.User) *api.UserDTO {
 	userDTO := api.UserDTO{
 		TelegramId: user.TelegramId,
 		Name: user.Name,
@@ -33,5 +33,5 @@ func ToDTO(user entities.User) (api.UserDTO, error) {
 		Description: user.Description,
 	}
 
-	return userDTO, nil
+	return &userDTO
 }
